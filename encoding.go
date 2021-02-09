@@ -73,7 +73,7 @@ func DecodeURLSafe(data string) ([]byte, error) {
 	data = strings.Replace(data, "!", "qq", -1)
 	data = strings.Replace(data, "~", "<<", -1)
 	data = string(cmatch.ReplaceAllFunc([]byte(data), func(b []byte) []byte {
-		count, _ := strconv.Atoi(string(data[2]))
+		count, _ := strconv.Atoi(string(b[2]))
 		return bytes.Repeat(b[:1], count)
 	}))
 	tmp, err := esafe.DecodeString(data)
